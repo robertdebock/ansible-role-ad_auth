@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: Robert de Bock
+  role_name: ad_auth
+  description: Install and configure ad_auth on your system.
+  license: Apache-2.0
+  company: none
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Amazon
+      versions:
+        - Candidate
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags:
+    - adauth
+    - centos
+    - redhat
+
+dependencies: []

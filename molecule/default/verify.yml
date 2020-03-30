@@ -1,0 +1,19 @@
+---
+- name: Verify
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: check adcli
+      command: /usr/sbin/adcli --help
+    - name: check authconfig
+      command: /usr/sbin/authconfig --help
+    - name: check krb5 workstation
+      command: /usr/bin/kdestroy
+    - name: check realmd
+      command: /usr/sbin/realm list
+    - name: check samba common tools
+      command: /usr/bin/net --version
+    - name: check samba winbindd
+      command: /usr/sbin/winbindd

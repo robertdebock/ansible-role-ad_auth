@@ -1,0 +1,9 @@
+---
+# tasks file for ad_auth
+- name: install packages
+  package:
+    name: "{{ ad_auth_packages }}"
+    state: present
+  register: ad_auth_install_packges
+  until: ad_auth_install_packges is succeeded
+  retries: 3

@@ -1,0 +1,16 @@
+---
+# vars file for ad_auth
+ad_auth_packages:
+  - adcli
+  - authconfig
+  - krb5-libs
+  - krb5-workstation
+  - oddjob
+  - oddjob-mkhomedir
+  - pam_krb5
+  - realmd
+  - samba-common
+  - samba-common-tools
+  - samba-winbind
+  - samba-winbind-clients
+  - sssd
