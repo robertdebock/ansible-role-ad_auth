@@ -5,7 +5,7 @@ Install and configure ad_auth on your system.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
-|[![travis](https://travis-ci.org/robertdebock/ansible-role-ad_auth.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-ad_auth)|[![github](https://github.com/robertdebock/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-ad_auth/actions)|![quality](https://img.shields.io/ansible/quality/)|![downloads](https://img.shields.io/ansible/role/d/)|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-ad_auth.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-ad_auth)|[![github](https://github.com/robertdebock/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-ad_auth/actions)|[![quality](https://img.shields.io/ansible/quality/47535)](https://galaxy.ansible.com/robertdebock/ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/47535)](https://galaxy.ansible.com/robertdebock/ad_auth)|
 
 Example Playbook
 ----------------
@@ -112,7 +112,7 @@ The minimum version of Ansible required is 2.7 but tests have been done to:
 Testing
 -------
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-ad_auth) are done on every commit, pull request, release and periodically.
+[Unit tests](https://travis-ci.com/robertdebock/ansible-role-ad_auth) are done on every commit, pull request, release and periodically.
 
 If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-ad_auth/issues)
 
