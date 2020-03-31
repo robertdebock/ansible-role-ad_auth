@@ -91,7 +91,6 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tags|
 |---------|----|
-|amazon|Candidate|
 |el|7|
 
 The minimum version of Ansible required is 2.7 but tests have been done to:
