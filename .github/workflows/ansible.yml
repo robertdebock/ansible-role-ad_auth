@@ -11,7 +11,7 @@ on:
       - '*'
   pull_request:
   schedule:
-    - cron: '4 1 1 * *'
+    - cron: '11 17 1 * *'
 
 jobs:
   lint:
