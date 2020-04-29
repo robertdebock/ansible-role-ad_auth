@@ -23,3 +23,11 @@
 - name: show ad_auth_configure_authconfig
   debug:
     msg: "{{ ad_auth_configure_authconfig }}"
+
+- name: join domain
+  command: "{{ ad_auth_join_command }}"
+  register: ad_auth_join_domain
+
+- name: show ad_auth_join_domain
+  debug:
+    msg: "{{ ad_auth_join_domain }}"
