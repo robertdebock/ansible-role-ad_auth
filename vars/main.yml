@@ -2,61 +2,14 @@
 # vars file for ad_auth
 ad_auth_packages:
   - adcli
-  - authconfig
-  - krb5-libs
-  - krb5-workstation
   - oddjob
   - oddjob-mkhomedir
-  - pam_krb5
   - realmd
   - samba-common
   - samba-common-tools
-  - samba-winbind
-  - samba-winbind-clients
   - sssd
 
-ad_auth_smb_options:
-  - option: password server
-    value: "*"
-  - option: winbind nested groups
-    value: "no"
-  - option: winbind enum groups
-    value: "no"
-  - option: winbind enum users
-    value: "no"
-  - option: expand groups
-    value: "no"
-  - option: workgroup
-    value: "{{ ad_auth_workgroup }}"
-  - option: realm
-    value: "{{ ad_auth_realm }}"
-  - option: security
-    value: ads
-  - option: "idmap config * : range"
-    value: 16777216-33554431
-  - option: template shell
-    value: /bin/false
-  - option: kerberos method
-    value: secrets and keytab
-  - option: winbind use default domain
-    value: "false"
-  - option: winbind offline logon
-    value: "false"
+ad_auth_pip_packages:
+  - pexpect
 
-ad_auth_files:
-  - src: authconfig
-    dest: /etc/sysconfig/authconfig
-  - src: password-auth
-    dest: /etc/pam.d/password-auth
-  - src: password-auth
-    dest: /etc/pam.d/password-auth-ac
-  - src: password-auth
-    dest: /etc/pam.d/system-auth
-  - src: password-auth
-    dest: /etc/pam.d/system-auth-ac
-
-ad_auth_templates:
-  - src: krb5.conf.j2
-    dest: /etc/krb5.conf
-
-ad_auth_join_command: "/bin/echo '{{ ad_auth_registration_hash }}' | base64 -d | ccat -E AD | /sbin/realm join --user={{ ad_auth_registration_user }} --computer-ou='OU={{ ad_auth_ou }}' {{ ad_auth_server }} --membership-software=adcli"
+ad_auth_join_command: "/usr/sbin/realm join --user={{ ad_auth_registration_username }} --computer-ou={{ ad_auth_ou }} {{ ad_auth_server }}"
