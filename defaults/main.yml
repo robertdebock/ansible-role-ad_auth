@@ -1,6 +1,9 @@
 ---
 # defaults file for ad_auth
 
+# The workgroup to configure, for example: "AD"
+ad_auth_workgroup: AD
+
 # The realm to connect to, for example "XYZ/example.com"
 ad_auth_realm: ""
 

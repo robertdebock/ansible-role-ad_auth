@@ -18,6 +18,12 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
 
   roles:
     - role: robertdebock.ad_auth
+      ad_auth_workgroup: MY_GROUP
+      ad_auth_realm: MY_REALM
+      ad_auth_registration_hash: a1b2c3
+      ad_auth_registration_user: my_user
+      ad_auth_ou: ou=Nerds,ou=Staff
+      ad_auth_server: my_server.example.com
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:
@@ -53,6 +59,8 @@ For verification `molecule/resources/verify.yml` run after the role has been app
       command: /usr/bin/net --version
     - name: check samba winbindd
       command: /usr/sbin/winbindd
+    - name: check if binding worked
+      shell: realm list | grep sssd
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -63,6 +71,9 @@ These variables are set in `defaults/main.yml`:
 ```yaml
 ---
 # defaults file for ad_auth
+
+# The workgroup to configure, for example: "AD"
+ad_auth_workgroup: AD
 
 # The realm to connect to, for example "XYZ/example.com"
 ad_auth_realm: ""

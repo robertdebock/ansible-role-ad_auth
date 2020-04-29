@@ -17,3 +17,5 @@
       command: /usr/bin/net --version
     - name: check samba winbindd
       command: /usr/sbin/winbindd
+    - name: check if binding worked
+      shell: realm list | grep my_realm
