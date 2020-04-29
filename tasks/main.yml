@@ -12,5 +12,6 @@
   ini_file:
     path: /etc/samba/smb.conf
     section: global
-    option: x
-    value: y
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  loop: "{{ ad_auth_smb_options }}"
