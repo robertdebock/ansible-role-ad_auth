@@ -57,8 +57,6 @@ For verification `molecule/resources/verify.yml` run after the role has been app
       command: /usr/sbin/realm list
     - name: check samba common tools
       command: /usr/bin/net --version
-    - name: check samba winbindd
-      command: /usr/sbin/winbindd
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.

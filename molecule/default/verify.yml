@@ -13,5 +13,3 @@
       command: /usr/sbin/realm list
     - name: check samba common tools
       command: /usr/bin/net --version
-    - name: check samba winbindd
-      command: /usr/sbin/winbindd
