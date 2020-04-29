@@ -14,3 +14,17 @@ ad_auth_packages:
   - samba-winbind
   - samba-winbind-clients
   - sssd
+
+ad_auth_smb_options:
+  - option: password server
+    value: *
+  - option: winbind nested groups
+    value: no
+  - option: winbind enum groups
+    value: no
+  - option: winbind enum users
+    value: no
+  - option: expand groups
+    value: no
+
+ad_auth_authconfig_command: "/sbin/authconfig  --enablekrb5 --enablekrb5kdcdns --enablekrb5realmdns --enablewinbindkrb5 --krb5realm={{ ad_auth_realm }} --enablewins --smbsecurity ads --smbworkgroup=AD --smbrealm {{ ad_auth_realm }} --smbservers={{ ad_auth_realm }} --enablelocauthorize --enablemkhomedir --update"

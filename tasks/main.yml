@@ -8,10 +8,18 @@
   until: ad_auth_install_packges is succeeded
   retries: 3
 
-- name: Configure smb.conf
+- name: configure samba
   ini_file:
     path: /etc/samba/smb.conf
     section: global
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   loop: "{{ ad_auth_smb_options }}"
+
+- name: configure authconfig
+  command: "{{ ad_auth_authconfig_command }}"
+  register: ad_auth_configure_authconfig
+
+- name: show ad_auth_configure_authconfig
+  debug:
+    msg: "{{ ad_auth_configure_authconfig }}"
