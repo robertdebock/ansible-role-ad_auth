@@ -3,7 +3,6 @@
 ad_auth_packages:
   - adcli
   - authconfig
-  - ccrypt
   - krb5-libs
   - krb5-workstation
   - oddjob
