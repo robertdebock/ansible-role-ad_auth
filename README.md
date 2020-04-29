@@ -63,6 +63,22 @@ These variables are set in `defaults/main.yml`:
 ```yaml
 ---
 # defaults file for ad_auth
+
+# The realm to connect to, for example "XYZ/example.com"
+ad_auth_realm: ""
+
+# The hash to register to AD, for example: "a1b2c3"
+ad_auth_registration_hash: ""
+
+# The user to register to AD, for example: "bind_user"
+ad_auth_registration_user: ""
+
+# The OU to search in, for example: "ou=Nerds,ou=Staff"
+ad_auth_ou: ""
+
+# The server to bind to, for example: "ad.example.com"
+ad_auth_server: xxx
+
 ```
 
 ## Requirements
