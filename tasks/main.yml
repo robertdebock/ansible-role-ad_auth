@@ -7,3 +7,10 @@
   register: ad_auth_install_packges
   until: ad_auth_install_packges is succeeded
   retries: 3
+
+- name: Configure smb.conf
+  ini_file:
+    path: /etc/samba/smb.conf
+    section: global
+    option: x
+    value: y
