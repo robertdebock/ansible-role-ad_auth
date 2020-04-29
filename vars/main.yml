@@ -17,7 +17,7 @@ ad_auth_packages:
 
 ad_auth_smb_options:
   - option: password server
-    value: *
+    value: "*"
   - option: winbind nested groups
     value: no
   - option: winbind enum groups
