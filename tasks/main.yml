@@ -7,33 +7,29 @@
   register: ad_auth_install_packges
   until: ad_auth_install_packges is succeeded
   retries: 3
+  notify:
+    - restart realmd
 
-- name: copy authconfig files
-  copy:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop: "{{ ad_auth_files }}"
-  loop_control:
-    label: "{{ item.src }}"
+- name: install pip packages
+  pip:
+    name: "{{ ad_auth_pip_packages }}"
+    state: present
+  register: ad_auth_install_pip_packges
+  until: ad_auth_install_pip_packges is succeeded
+  retries: 3
 
-- name: template authconfig files
+- name: place sssd configuration
   template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop: "{{ ad_auth_templates }}"
-  loop_control:
-    label: "{{ item.src }}"
-
-- name: configure samba
-  ini_file:
-    path: /etc/samba/smb.conf
-    section: global
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
-  loop: "{{ ad_auth_smb_options }}"
-  loop_control:
-    label: "{{ item.option }}"
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+    mode: "0600"
+  notify:
+    - restart sssd
 
 - name: join domain
-  command: "{{ ad_auth_join_command }}"
-  changed_when: no
+  expect:
+    command: "{{ ad_auth_join_command }}"
+    responses:
+      Password for *: "{{ ad_auth_registration_password }}"
+  when:
+    - ad_auth_join | bool

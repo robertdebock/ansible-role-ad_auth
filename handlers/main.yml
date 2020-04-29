@@ -1,2 +1,13 @@
 ---
 # handlers file for ad_auth
+- name: restart realmd
+  systemd:
+    name: realmd
+    state: restarted
+
+- name: restart sssd
+  systemd:
+    name: sssd
+    state: restarted
+  when:
+    - ad_auth_join | bool
