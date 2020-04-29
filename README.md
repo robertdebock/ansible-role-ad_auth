@@ -1,6 +1,6 @@
 # ad_auth
 
-Install and configure ad_auth on your system.
+Bind a system to Active Directory.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
@@ -18,12 +18,12 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
 
   roles:
     - role: robertdebock.ad_auth
-      ad_auth_workgroup: MY_GROUP
-      ad_auth_realm: MY_REALM
-      ad_auth_registration_hash: a1b2c3
-      ad_auth_registration_user: my_user
+      ad_auth_registration_username: my_username
+      ad_auth_registration_password: my_password
       ad_auth_ou: ou=Nerds,ou=Staff
       ad_auth_server: my_server.example.com
+      ad_auth_domain: my_domain.local
+      ad_auth_join: no
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:
@@ -36,6 +36,8 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
 
   roles:
     - role: robertdebock.bootstrap
+    - role: robertdebock.epel
+    - role: robertdebock.python_pip
 ```
 
 For verification `molecule/resources/verify.yml` run after the role has been applied.
@@ -51,16 +53,12 @@ For verification `molecule/resources/verify.yml` run after the role has been app
       command: /usr/sbin/adcli --help
     - name: check authconfig
       command: /usr/sbin/authconfig --help
-    - name: check krb5 workstation
-      command: /usr/bin/kdestroy
     - name: check realmd
       command: /usr/sbin/realm list
     - name: check samba common tools
       command: /usr/bin/net --version
     - name: check samba winbindd
       command: /usr/sbin/winbindd
-    - name: check if binding worked
-      shell: realm list | grep sssd
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -72,24 +70,24 @@ These variables are set in `defaults/main.yml`:
 ---
 # defaults file for ad_auth
 
-# The workgroup to configure, for example: "AD"
-ad_auth_workgroup: AD
+# The username to register to AD, for example: "bind_user"
+ad_auth_registration_username: "unset"
 
-# The realm to connect to, for example "XYZ/example.com"
-ad_auth_realm: ""
-
-# The hash to register to AD, for example: "a1b2c3"
-ad_auth_registration_hash: ""
-
-# The user to register to AD, for example: "bind_user"
-ad_auth_registration_user: ""
+# The password to register to AD, for example: "MyPaSsWoRd"
+ad_auth_registration_password: "unset"
 
 # The OU to search in, for example: "ou=Nerds,ou=Staff"
-ad_auth_ou: ""
+ad_auth_ou: "unset"
 
 # The server to bind to, for example: "ad.example.com"
-ad_auth_server: xxx
+ad_auth_server: "unset"
 
+# The domain to use for SSSD configuration, for example: "example.com"
+ad_auth_domain: "usnet.local"
+
+# Should this role try to bind to the AD server?
+# (This can be unset for automated testing)
+ad_auth_join: yes
 ```
 
 ## Requirements
@@ -102,6 +100,8 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.epel
+- robertdebock.python_pip
 
 ```
 

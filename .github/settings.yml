@@ -3,5 +3,5 @@
 # Ansible managed
 #
 repository:
-  description: Install and configure ad_auth on your system.
+  description: Bind a system to Active Directory.
   homepage: https://robertdebock.nl/
