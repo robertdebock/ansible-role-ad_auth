@@ -55,6 +55,8 @@
     name: "{{ item }}"
     state: started
   loop: "{{ ad_auth_services }}"
+  when:
+    - ad_auth_join | bool
 
 - name: join domain
   expect:
