@@ -7,8 +7,6 @@
   tasks:
     - name: check adcli
       command: /usr/sbin/adcli --help
-    - name: check authconfig
-      command: /usr/sbin/authconfig --help
     - name: check realmd
       command: /usr/sbin/realm list
     - name: check samba common tools
