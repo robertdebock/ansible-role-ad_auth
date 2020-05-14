@@ -51,18 +51,18 @@
     state: before
   loop: "{{ ad_auth_pam_files }}"
 
-- name: start services
-  service:
-    name: "{{ item }}"
-    state: started
-  loop: "{{ ad_auth_services }}"
-  when:
-    - ad_auth_join | bool
-
 - name: join domain
   expect:
     command: "{{ ad_auth_join_command }}"
     responses:
       Password for *: "{{ ad_auth_registration_password }}"
+  when:
+    - ad_auth_join | bool
+
+- name: start services
+  service:
+    name: "{{ item }}"
+    state: started
+  loop: "{{ ad_auth_services }}"
   when:
     - ad_auth_join | bool
