@@ -61,22 +61,22 @@ ad_auth_sssd_configuration:
     value: manages-system joined-with-samba
   - option: cache_credentials
     section: domain/{{ ad_auth_domain }}
-    value: '"True"'
+    value: 'True'
   - option: id_provider
     section: domain/{{ ad_auth_domain }}
     value: ad
   - option: krb5_store_password_if_offline
     section: domain/{{ ad_auth_domain }}
-    value: '"True"'
+    value: 'True'
   - option: default_shell
     section: domain/{{ ad_auth_domain }}
     value: /bin/bash
   - option: ldap_id_mapping
     section: domain/{{ ad_auth_domain }}
-    value: '"True"'
+    value: 'True'
   - option: use_fullyQualified_names
     section: domain/{{ ad_auth_domain }}
-    value: '"False"'
+    value: 'False'
   - option: fallback_homedir
     section: domain/{{ ad_auth_domain }}
     value: /home/%u
