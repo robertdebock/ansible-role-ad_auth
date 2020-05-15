@@ -10,6 +10,13 @@
   notify:
     - restart realmd
 
+- name: gather package facts
+  package_facts:
+
+- name: gather pip facts
+  pip_package_info:
+  register: ad_auth_pip_package_info
+
 - name: install pip packages
   pip:
     name: "{{ ad_auth_pip_packages }}"
@@ -18,6 +25,10 @@
   register: ad_auth_install_pip_packges
   until: ad_auth_install_pip_packges is succeeded
   retries: 3
+  when:
+    - packages['pexpect'] is not defined or
+      packages['pexpect'][0].version is version('3.3', '<=')
+    - "'pexpect' not in ad_auth_pip_package_info.packages.pip"
 
 - name: configure nsswitch to use sss
   lineinfile:
