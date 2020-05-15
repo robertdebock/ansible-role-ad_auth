@@ -13,9 +13,15 @@
 - name: gather package facts
   package_facts:
 
-- name: gather pip facts
-  pip_package_info:
+- name: gather pip packages
+  command: pip list
+  check_mode: no
+  changed_when: no
   register: ad_auth_pip_package_info
+
+- name: show shit
+  debug:
+    msg: "{{ ad_auth_pip_package_info.stdout }}"
 
 - name: install pip packages
   pip:
@@ -28,7 +34,7 @@
   when:
     - packages['pexpect'] is not defined or
       packages['pexpect'][0].version is version('3.3', '<=')
-    - "'pexpect' not in ad_auth_pip_package_info.packages.pip"
+    - "'pexpect' not in ad_auth_pip_package_info.stdout"
 
 - name: configure nsswitch to use sss
   lineinfile:
@@ -36,6 +42,14 @@
     regexp: "^{{ item }}:"
     line: "{{ item }}:\tfiles sss"
   loop: "{{ ad_auth_nsswich_maps }}"
+
+- name: join domain
+  expect:
+    command: "{{ ad_auth_join_command }}"
+    responses:
+      Password for *: "{{ ad_auth_registration_password }}"
+  when:
+    - ad_auth_join | bool
 
 - name: configure sssd to work with nss
   ini_file:
@@ -62,14 +76,6 @@
     module_arguments: use_first_pass
     state: before
   loop: "{{ ad_auth_pam_files }}"
-
-- name: join domain
-  expect:
-    command: "{{ ad_auth_join_command }}"
-    responses:
-      Password for *: "{{ ad_auth_registration_password }}"
-  when:
-    - ad_auth_join | bool
 
 - name: start services
   service:
