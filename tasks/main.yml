@@ -19,10 +19,6 @@
   changed_when: no
   register: ad_auth_pip_package_info
 
-- name: show shit
-  debug:
-    msg: "{{ ad_auth_pip_package_info.stdout }}"
-
 - name: install pip packages
   pip:
     name: "{{ ad_auth_pip_packages }}"
