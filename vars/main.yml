@@ -113,9 +113,9 @@ ad_auth_krb5_conf_settings:
   - option: "$AD"
     section: realms
     value: "{ kdc = $AD }"
-  - options: "{{ ad_auth_domain }}"
+  - option: "{{ ad_auth_domain }}"
     section: domain_realm
     value: "{{ ad_auth_domain | upper }}"
-  - options: ".{{ ad_auth_domain }}"
+  - option: ".{{ ad_auth_domain }}"
     section: domain_realm
     value: "{{ ad_auth_domain | upper }}"
