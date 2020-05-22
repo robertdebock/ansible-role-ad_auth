@@ -55,31 +55,31 @@
   when:
     - ad_auth_join | bool
 
-# - name: configure sssd to work with nss
-#   ini_file:
-#     path: /etc/sssd/sssd.conf
-#     section: "{{ item.section }}"
-#     option: "{{ item.option }}"
-#     value: "{{ item.value }}"
-#     mode: "0600"
-#   loop: "{{ ad_auth_sssd_configuration }}"
-#   loop_control:
-#     label: "{{ item.option }}"
-#   notify:
-#     - restart sssd
-# 
-# - name: configure pam to use sssd
-#   pamd:
-#     name: "{{ item }}"
-#     type: auth
-#     new_type: auth
-#     control: required
-#     new_control: sufficient
-#     module_path: pam_deny.so
-#     new_module_path: pam_sss.so
-#     module_arguments: use_first_pass
-#     state: before
-#   loop: "{{ ad_auth_pam_files }}"
+- name: configure sssd to work with nss
+  ini_file:
+    path: /etc/sssd/sssd.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    mode: "0600"
+  loop: "{{ ad_auth_sssd_configuration }}"
+  loop_control:
+    label: "{{ item.option }}"
+  notify:
+    - restart sssd
+ 
+- name: configure pam to use sssd
+  pamd:
+    name: "{{ item }}"
+    type: auth
+    new_type: auth
+    control: required
+    new_control: sufficient
+    module_path: pam_deny.so
+    new_module_path: pam_sss.so
+    module_arguments: use_first_pass
+    state: before
+  loop: "{{ ad_auth_pam_files }}"
 
 - name: start services
   service:
