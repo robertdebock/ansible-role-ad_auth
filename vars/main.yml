@@ -15,7 +15,7 @@ ad_auth_pip_packages:
 
 ad_auth_nsswich_maps:
   - name: hosts
-    options: "files wins dns myhostname
+    options: "files wins dns myhostname"
   - name: netgroup
     options: "files sss"
   - name: automount
