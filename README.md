@@ -55,6 +55,14 @@ For verification `molecule/resources/verify.yml` run after the role has been app
       command: /usr/sbin/realm list
     - name: check samba common tools
       command: /usr/bin/net --version
+    - name: check pam_krb5.so
+      stat:
+        path: /usr/lib64/security/pam_krb5.so
+      register: ad_auth_pam_krb5_so
+    - name: assert pam_krb5.so
+      assert:
+        that:
+          - ad_auth_pam_krb5_so.stat.exists | bool
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -110,11 +118,12 @@ Here is an overview of related roles:
 
 ## Compatibility
 
-This role has been tested on these [container images](https://hub.docker.com/):
+This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
 
 |container|tags|
 |---------|----|
 |el|7|
+|fedora|31|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 
