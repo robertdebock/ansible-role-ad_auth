@@ -26,9 +26,6 @@ ad_auth_sssd_configuration:
   - option: domains
     section: sssd
     value: "{{ ad_auth_domain }}"
-  - option: default_domain_suffix
-    section: sssd
-    value: "{{ ad_auth_domain }}"
   - option: services
     section: sssd
     value: nss, pam
@@ -55,9 +52,9 @@ ad_auth_sssd_configuration:
     section: pam
     value: 5
   # domain/{{ ad_auth_domain }} items
-  - option: krb5_domain
+  - option: ad_server
     section: domain/{{ ad_auth_domain }}
-    value: "{{ ad_auth_domain }}"
+    value: {{ ad_auth_domain }}
   - option: realmd_tags
     section: domain/{{ ad_auth_domain }}
     value: manages-system joined-with-samba
@@ -76,7 +73,7 @@ ad_auth_sssd_configuration:
   - option: ldap_id_mapping
     section: domain/{{ ad_auth_domain }}
     value: 'True'
-  - option: use_fullyQualified_names
+  - option: use_fully_qualified_names
     section: domain/{{ ad_auth_domain }}
     value: 'False'
   - option: fallback_homedir
@@ -96,26 +93,3 @@ ad_auth_services:
   - oddjobd
 
 ad_auth_join_command: "/usr/sbin/realm join --user={{ ad_auth_registration_username }} --computer-ou={{ ad_auth_ou }} {{ ad_auth_server }}"
-
-ad_auth_krb5_conf_settings:
-  - option: dns_lookup_realm
-    section: libdefaults
-    value: "true"
-  - option: default_realm
-    section: libdefaults
-    value: "{{ ad_auth_domain }}"
-  - option: dns_lookup_kdc
-    section: libdefaults
-    value: "true"
-  - option: "{{ ad_auth_domain | upper }}"
-    section: realms
-    value: "{}"
-  - option: "$AD"
-    section: realms
-    value: "{ kdc = $AD }"
-  - option: "{{ ad_auth_domain }}"
-    section: domain_realm
-    value: "{{ ad_auth_domain | upper }}"
-  - option: ".{{ ad_auth_domain }}"
-    section: domain_realm
-    value: "{{ ad_auth_domain | upper }}"

@@ -35,17 +35,9 @@
 - name: configure nsswitch to use sss
   lineinfile:
     path: /etc/nsswitch.conf
-    regexp: "^{{ item.name }}:"
-    line: "{{ item.name }}:\t{{ item.options }}"
+    regexp: "^{{ item }}:"
+    line: "{{ item }}:\tfiles sss"
   loop: "{{ ad_auth_nsswich_maps }}"
-
-- name: configure krb5
-  ini_file:
-    path: /etc/krb5.conf
-    section: "{{ item.section }}"
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
-  loop: "{{ ad_auth_krb5_conf_settings }}"
 
 - name: join domain
   expect:
@@ -67,7 +59,7 @@
     label: "{{ item.option }}"
   notify:
     - restart sssd
- 
+
 - name: configure pam to use sssd
   pamd:
     name: "{{ item }}"
