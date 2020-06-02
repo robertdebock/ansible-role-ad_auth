@@ -54,7 +54,7 @@ ad_auth_sssd_configuration:
   # domain/{{ ad_auth_domain }} items
   - option: ad_server
     section: domain/{{ ad_auth_domain }}
-    value: {{ ad_auth_domain }}
+    value: "{{ ad_auth_domain }}"
   - option: realmd_tags
     section: domain/{{ ad_auth_domain }}
     value: manages-system joined-with-samba
