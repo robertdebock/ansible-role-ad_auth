@@ -14,12 +14,11 @@ ad_auth_pip_packages:
   - pexpect
 
 ad_auth_nsswich_maps:
-  - name: hosts
-    options: "files wins dns myhostname"
-  - name: netgroup
-    options: "files sss"
-  - name: automount
-    options: "files"
+  - passwd
+  - shadow
+  - group
+  - netgroup
+  - services
 
 ad_auth_sssd_configuration:
   # sssd items
@@ -52,9 +51,6 @@ ad_auth_sssd_configuration:
     section: pam
     value: 5
   # domain/{{ ad_auth_domain }} items
-  - option: ad_server
-    section: domain/{{ ad_auth_domain }}
-    value: "{{ ad_auth_domain }}"
   - option: realmd_tags
     section: domain/{{ ad_auth_domain }}
     value: manages-system joined-with-samba
@@ -73,15 +69,18 @@ ad_auth_sssd_configuration:
   - option: ldap_id_mapping
     section: domain/{{ ad_auth_domain }}
     value: 'True'
-  - option: use_fully_qualified_names
-    section: domain/{{ ad_auth_domain }}
-    value: 'False'
   - option: fallback_homedir
     section: domain/{{ ad_auth_domain }}
     value: /home/%u
   - option: access_provider
     section: domain/{{ ad_auth_domain }}
-    value: ad
+    value: simple
+  - option: ignore_group_members
+    section: domain/{{ ad_auth_domain }}
+    value: True
+  - option: use_fully_qualified_names
+    section: domain/{{ ad_auth_domain }}
+    value: ''
 
 ad_auth_pam_files:
   - system-auth
