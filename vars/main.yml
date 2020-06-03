@@ -12,13 +12,14 @@ ad_auth_packages:
 
 ad_auth_pip_packages:
   - pexpect
-    
+
 ad_auth_nsswich_maps:
-  - passwd
-  - shadow
-  - group
-  - netgroup
-  - services
+  - name: hosts
+    options: "files wins dns myhostname"
+  - name: netgroup
+    options: "files sss"
+  - name: automount
+    options: "files"
 
 ad_auth_sssd_configuration:
   # sssd items
