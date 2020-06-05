@@ -53,7 +53,7 @@
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
-    mode: "0600"
+    mode: "600"
   loop: "{{ ad_auth_sssd_configuration }}"
   loop_control:
     label: "{{ item.option }}"
