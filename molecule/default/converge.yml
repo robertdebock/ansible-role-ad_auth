@@ -12,3 +12,6 @@
       ad_auth_server: my_server.example.com
       ad_auth_domain: my_domain.local
       ad_auth_join: no
+      ad_auth_simple_allow_users:
+        - my_user_1
+        - my_user_2

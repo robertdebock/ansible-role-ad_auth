@@ -60,6 +60,25 @@
   notify:
     - restart sssd
 
+- name: limit login to selected users
+  block:
+    - name: enable simple provider
+      ini_file:
+        path: /etc/sssd/sssd.conf
+        section: "domain/{{ ad_auth_domain }}"
+        option: access_provider
+        value: "simple"
+    - name: limit login to selected users
+      ini_file:
+        path: /etc/sssd/sssd.conf
+        section: "domain/{{ ad_auth_domain }}"
+        option: simple_allow_users
+        value: "{{ ad_auth_simple_allow_users | join(', ') }}"
+        mode: "600"
+  when:
+    - ad_auth_simple_allow_users is defined
+    - ad_auth_simple_allow_users | length > 0
+
 - name: configure pam to use sssd
   pamd:
     name: "{{ item }}"

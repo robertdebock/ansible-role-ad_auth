@@ -24,6 +24,9 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
       ad_auth_server: my_server.example.com
       ad_auth_domain: my_domain.local
       ad_auth_join: no
+      ad_auth_simple_allow_users:
+        - my_user_1
+        - my_user_2
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:
@@ -92,6 +95,12 @@ ad_auth_domain: "usnet.local"
 # Should this role try to bind to the AD server?
 # (This can be unset for automated testing)
 ad_auth_join: yes
+
+# To limit selected users to login, fill this list with users that are
+# allowed to login:
+# ad_auth_simple_allow_users:
+#   - my_user_1
+#   - my_user_2
 ```
 
 ## [Requirements](#requirements)
