@@ -77,7 +77,7 @@ ad_auth_sssd_configuration:
     value: simple
   - option: ignore_group_members
     section: domain/{{ ad_auth_domain }}
-    value: True
+    value: 'True'
   - option: use_fully_qualified_names
     section: domain/{{ ad_auth_domain }}
     value: ''
