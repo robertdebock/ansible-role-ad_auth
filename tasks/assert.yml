@@ -42,4 +42,3 @@
       - ad_auth_simple_allow_users is iterable
   when:
     - ad_auth_simple_allow_users is defined
-
