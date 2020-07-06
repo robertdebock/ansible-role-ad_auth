@@ -1,5 +1,6 @@
 ---
 # vars file for ad_auth
+
 ad_auth_packages:
   - adcli
   - oddjob
