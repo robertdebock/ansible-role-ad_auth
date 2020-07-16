@@ -7,9 +7,6 @@
   package:
     name: "{{ ad_auth_packages }}"
     state: present
-  register: ad_auth_install_packges
-  until: ad_auth_install_packges is succeeded
-  retries: 3
   notify:
     - restart realmd
 
@@ -27,9 +24,6 @@
     name: "{{ ad_auth_pip_packages }}"
     state: present
     extra_args: --ignore-installed
-  register: ad_auth_install_pip_packges
-  until: ad_auth_install_pip_packges is succeeded
-  retries: 3
   when:
     - packages['pexpect'] is not defined or
       packages['pexpect'][0].version is version('3.3', '<=')
