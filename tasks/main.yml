@@ -73,7 +73,7 @@
         section: "domain/{{ ad_auth_domain }}"
         option: simple_allow_users
         value: "{{ ad_auth_simple_allow_users | join(', ') }}"
-        mode: "600"
+        mode: "0644"
   when:
     - ad_auth_simple_allow_users is defined
     - ad_auth_simple_allow_users | length > 0
