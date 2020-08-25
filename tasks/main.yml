@@ -51,7 +51,7 @@
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
-    mode: "600"
+    mode: &sssd_conf_mode "600"
   loop: "{{ ad_auth_sssd_configuration }}"
   loop_control:
     label: "{{ item.option }}"
@@ -66,14 +66,14 @@
         section: "domain/{{ ad_auth_domain }}"
         option: access_provider
         value: "simple"
-        mode: "0600"
+        mode: *sssd_conf_mode
     - name: limit login to selected users
       ini_file:
         path: /etc/sssd/sssd.conf
         section: "domain/{{ ad_auth_domain }}"
         option: simple_allow_users
         value: "{{ ad_auth_simple_allow_users | join(', ') }}"
-        mode: "0644"
+        mode: *sssd_conf_mode
   when:
     - ad_auth_simple_allow_users is defined
     - ad_auth_simple_allow_users | length > 0
