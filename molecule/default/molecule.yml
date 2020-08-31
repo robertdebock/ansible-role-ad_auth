@@ -8,9 +8,8 @@ dependency:
     role-file: requirements.yml
 lint: |
   set -e
-  pwd
   yamllint .
-  ansible-lint
+  ansible-lint tasks/main.yml
 driver:
   name: docker
 platforms:
