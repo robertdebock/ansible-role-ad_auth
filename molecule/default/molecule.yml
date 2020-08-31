@@ -8,6 +8,7 @@ dependency:
     role-file: requirements.yml
 lint: |
   set -e
+  pwd
   yamllint .
   ansible-lint
 driver:
