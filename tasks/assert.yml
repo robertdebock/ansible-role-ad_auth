@@ -10,7 +10,7 @@
   assert:
     that:
       - ad_auth_registration_password is defined
-      - ad_auth_registration_password | length > 0
+      - ad_auth_registration_password | string | length > 0
     quiet: yes
 
 - name: test if ad_auth_ou is set correctly
