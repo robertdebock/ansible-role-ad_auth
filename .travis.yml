@@ -33,7 +33,7 @@ script:
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   slack:
-    secure: I5QMPu6cr4b9aVM5WaFqmD4DDknimEfAFE8tHbMWZE7JzwCaurCTr9wxw6xs+H58AKLHNbgMhbl6Q4sw/zXeag4oijnOD4+6loJAX/r+lE61HsOEFg8BAzVXcdVFABMebWgJmw4yVsQFC3nCIk85DmV8NJhSTt3JBkUxlqCDs+m5g+TMLTf3UKtqI+EB8afsiLSitw0dWb5sofI8n3UIVEig+2ZAEQIpnQ8Y78qduGFOTBqklKbaf99R0FngDNvlr5wM8F78X7lJ9vbi34/wJgdt6XGYZhsG+LLboZVRiTamM8Qmg7UpF3jvZu1XbsLFEzYeDTHFYRe6tJUbzjYxCcZ7W51Fd6wxWCNtqR2U5SC5OoJYL4ctuwsdOGsv7/L5qzcG1XO6ZFG2hh/5pKHAR9N4FuU+BCAmssqU9aUE38dpfHFywGv2NCud2TjaM7UqT7teVQl+osWjCWjorEgBUaI/zjruleo1WtL5COLwmIoC0O9usDmijGgxvnabc/twjrZ/DujjMceen1VjvKdgix7YA7vcQIklAIHko6UdG6+ZU+3cyOzWXTEEKvV7O5FHEiErOALAqOtBxTgqnWkeev/XWivw20aswBZv8/YwE8fZo3mrJ5F8erkfb6fkAQ/Yn6Q0sbtXtWyzqgdmJzBhSdEw9cQlR7jEj7Y9og0PpPw=
-  on_success: change
-
+    secure: "I5QMPu6cr4b9aVM5WaFqmD4DDknimEfAFE8tHbMWZE7JzwCaurCTr9wxw6xs+H58AKLHNbgMhbl6Q4sw/zXeag4oijnOD4+6loJAX/r+lE61HsOEFg8BAzVXcdVFABMebWgJmw4yVsQFC3nCIk85DmV8NJhSTt3JBkUxlqCDs+m5g+TMLTf3UKtqI+EB8afsiLSitw0dWb5sofI8n3UIVEig+2ZAEQIpnQ8Y78qduGFOTBqklKbaf99R0FngDNvlr5wM8F78X7lJ9vbi34/wJgdt6XGYZhsG+LLboZVRiTamM8Qmg7UpF3jvZu1XbsLFEzYeDTHFYRe6tJUbzjYxCcZ7W51Fd6wxWCNtqR2U5SC5OoJYL4ctuwsdOGsv7/L5qzcG1XO6ZFG2hh/5pKHAR9N4FuU+BCAmssqU9aUE38dpfHFywGv2NCud2TjaM7UqT7teVQl+osWjCWjorEgBUaI/zjruleo1WtL5COLwmIoC0O9usDmijGgxvnabc/twjrZ/DujjMceen1VjvKdgix7YA7vcQIklAIHko6UdG6+ZU+3cyOzWXTEEKvV7O5FHEiErOALAqOtBxTgqnWkeev/XWivw20aswBZv8/YwE8fZo3mrJ5F8erkfb6fkAQ/Yn6Q0sbtXtWyzqgdmJzBhSdEw9cQlR7jEj7Y9og0PpPw="
+    on_success: change
+    template: "%{result}: %{repository_slug}@%{branch}, build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>)"
   email: false
