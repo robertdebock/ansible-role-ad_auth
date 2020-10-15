@@ -17,7 +17,7 @@ galaxy_info:
 
   galaxy_tags:
     - adauth
-    - centos
-    - redhat
+    - activedirectory
+    - authentication
 
 dependencies: []
