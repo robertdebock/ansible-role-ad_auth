@@ -5,4 +5,4 @@
 repository:
   description: Bind a system to Active Directory.
   homepage: https://robertdebock.nl/
-  topics: adauth, activedirectory, authentication, hacktoberfest
+  topics: adauth, activedirectory, authentication, ansible, molecule, tox, playbook, hacktoberfest
