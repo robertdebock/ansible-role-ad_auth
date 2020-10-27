@@ -13,7 +13,7 @@ galaxy_info:
         - 7
     - name: Fedora
       versions:
-        - 31
+        - all
 
   galaxy_tags:
     - adauth
