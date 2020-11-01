@@ -1,4 +1,5 @@
 ---
-- robertdebock.bootstrap
-- robertdebock.epel
-- robertdebock.python_pip
+roles:
+  - name: robertdebock.bootstrap
+  - name: robertdebock.epel
+  - name: robertdebock.python_pip
