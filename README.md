@@ -83,7 +83,7 @@ ad_auth_join: yes
 - Access to a repository containing packages, likely on the internet.
 - A recent version of Ansible. (Tests run on the current, previous and next release of Ansible.)
 
-## [Status of requirements](#status_of_requirements)
+## [Status of requirements](#statusofrequirements)
 
 | Requirement | Travis | GitHub |
 |-------------|--------|--------|
