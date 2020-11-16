@@ -38,7 +38,7 @@
   assert:
     that:
       - ad_auth_join is defined
-      - ad_auth_join | type_debug == "bool"
+      - ad_auth_join is boolean
     quiet: yes
 
 - name: test if ad_auth_simple_allow_users is set correctly
