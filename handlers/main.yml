@@ -1,9 +1,12 @@
 ---
 # handlers file for ad_auth
+
 - name: restart realmd
   systemd:
     name: realmd
     state: restarted
+  when:
+    - not ansible_check_mode | bool
 
 - name: restart sssd
   systemd:
@@ -11,3 +14,4 @@
     state: restarted
   when:
     - ad_auth_join | bool
+    - not ansible_check_mode | bool
