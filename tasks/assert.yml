@@ -1,4 +1,5 @@
 ---
+
 - name: test if ad_auth_registration_username is set correctly
   assert:
     that:
