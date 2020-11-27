@@ -4,30 +4,35 @@
   assert:
     that:
       - ad_auth_registration_username is defined
+      - ad_auth_registration_username is string
     quiet: yes
 
 - name: test if ad_auth_registration_password is set correctly
   assert:
     that:
       - ad_auth_registration_password is defined
+      - ad_auth_registration_password is string
     quiet: yes
 
 - name: test if ad_auth_ou is set correctly
   assert:
     that:
       - ad_auth_ou is defined
+      - ad_auth_ou is string
     quiet: yes
 
 - name: test if ad_auth_server is set correctly
   assert:
     that:
       - ad_auth_server is defined
+      - ad_auth_server is string
     quiet: yes
 
 - name: test if ad_auth_domain is set correctly
   assert:
     that:
       - ad_auth_domain is defined
+      - ad_auth_domain is string
     quiet: yes
 
 - name: test if ad_auth_join is set correctly
