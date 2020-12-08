@@ -2,9 +2,9 @@
 
 Bind a system to Active Directory.
 
-|Travis|GitHub|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-ad_auth.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-ad_auth)|[![github](https://github.com/robertdebock/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-ad_auth/actions)|[![quality](https://img.shields.io/ansible/quality/47535)](https://galaxy.ansible.com/robertdebock/ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/47535)](https://galaxy.ansible.com/robertdebock/ad_auth)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-ad_auth.svg)](https://github.com/robertdebock/ansible-role-ad_auth/releases/)|
+|Travis|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-ad_auth.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-ad_auth)|[![github](https://github.com/robertdebock/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-ad_auth/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-ad_auth/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-ad_auth)|[![quality](https://img.shields.io/ansible/quality/47535)](https://galaxy.ansible.com/robertdebock/ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/47535)](https://galaxy.ansible.com/robertdebock/ad_auth)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-ad_auth.svg)](https://github.com/robertdebock/ansible-role-ad_auth/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
