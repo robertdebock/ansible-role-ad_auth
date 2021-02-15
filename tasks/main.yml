@@ -36,7 +36,7 @@
   lineinfile:
     path: /etc/nsswitch.conf
     regexp: "^{{ item }}:"
-    line: "{{ item }}:\tfiles sss"
+    line: "{{ item }}:\tfiles sss"  # noqa: no-tabs
     mode: "0644"
   loop: "{{ ad_auth_nsswich_maps }}"
 
