@@ -81,7 +81,7 @@ ad_auth_sssd_configuration:
     value: 'True'
   - option: use_fully_qualified_names
     section: domain/{{ ad_auth_domain }}
-    value: ''
+    value: 'True'
 
 ad_auth_pam_files:
   - system-auth
