@@ -1,0 +1,13 @@
+digraph PhiloDilemma {
+  label = "Robert de Bock" ;
+  overlap=false
+  {
+    "ad_auth" [fillcolor=yellow style=filled penwidth=3]
+    "robertdebock.bootstrap" [fillcolor=green style=filled]
+    "robertdebock.epel" [fillcolor=green style=filled]
+    "robertdebock.python_pip" [fillcolor=green style=filled]
+  }
+  "ad_auth" -> "robertdebock.bootstrap"
+  "ad_auth" -> "robertdebock.epel"
+  "ad_auth" -> "robertdebock.python_pip"
+}
