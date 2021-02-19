@@ -7,14 +7,14 @@
   delegate_to: localhost
 
 - name: install packages
-  package:
+  ansible.builtin.package:
     name: "{{ ad_auth_packages }}"
     state: present
   notify:
     - restart realmd
 
 - name: gather package facts
-  package_facts:
+  ansible.builtin.package_facts:
 
 - name: gather pip packages
   command: pip list
@@ -23,7 +23,7 @@
   register: ad_auth_pip_package_info
 
 - name: install pip packages
-  pip:
+  ansible.builtin.pip:
     name: "{{ ad_auth_pip_packages }}"
     state: present
     extra_args: --ignore-installed
@@ -33,7 +33,7 @@
     - "'pexpect' not in ad_auth_pip_package_info.stdout"
 
 - name: configure nsswitch to use sss
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/nsswitch.conf
     regexp: "^{{ item }}:"
     line: "{{ item }}:\tfiles sss"  # noqa: no-tabs
@@ -41,7 +41,7 @@
   loop: "{{ ad_auth_nsswich_maps }}"
 
 - name: join domain
-  expect:
+  ansible.builtin.expect:
     command: "{{ ad_auth_join_command }}"
     responses:
       Password for *: "{{ ad_auth_registration_password }}"
@@ -49,7 +49,7 @@
     - ad_auth_join | bool
 
 - name: configure sssd to work with nss
-  ini_file:
+  community.general.ini_file:
     path: /etc/sssd/sssd.conf
     section: "{{ item.section }}"
     option: "{{ item.option }}"
@@ -82,7 +82,7 @@
     - ad_auth_simple_allow_users | length > 0
 
 - name: configure pam to use sssd
-  pamd:
+  community.general.pamd:
     name: "{{ item }}"
     type: auth
     new_type: auth
@@ -95,7 +95,7 @@
   loop: "{{ ad_auth_pam_files }}"
 
 - name: start services
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     state: started
   loop: "{{ ad_auth_services }}"
