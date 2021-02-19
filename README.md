@@ -1,5 +1,7 @@
 # [ad_auth](#ad_auth)
 
+DEPRECATION WARNING: This repository is not maintained anymore; This role only runs on CentOS 7 and required pip modules, but since [end of 2020](https://www.python.org/doc/sunset-python-2/) there is no development on python 2 anymore.
+
 Bind a system to Active Directory.
 
 |GitHub|GitLab|Quality|Downloads|Version|
